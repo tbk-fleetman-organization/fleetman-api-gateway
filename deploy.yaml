@@ -19,6 +19,8 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: production-microservice
         # Using this as a way to avoid having to bother pushing images to registry.
+        # Don't want to push all the images to a repo like Docker Hub which is the common way.
+        # Or a private registry..  Default is to 'pull the image' if it changes.
         imagePullPolicy: Never
         readinessProbe:
           httpGet:
