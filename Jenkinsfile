@@ -31,6 +31,10 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
+             // envsubst is a linux command built into this jenkins image
+             // it will take the yaml file (deploy.yaml) and it will do a search
+             // and replace and substitute any env vars that it files..
+             // and it will pipe that into kubectl apply..
                     sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
           }
       }
